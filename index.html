@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Slider</title>
+<!-- <link rel="stylesheet" href=""> -->
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  .slider-container {
+    position: relative;
+    width: auto;
+    height: 3rem;
+    overflow: hidden;
+  }
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  .slider img {
+    width: 400px;
+    height: 3rem;
+    object-fit: cover;
+  }
+</style>
+</head>
+<body>
+  <script>
+ const slider = document.querySelector('.slider');
+let slideIndex = 0;
+
+function nextSlide() {
+  slideIndex = (slideIndex + 1) % slider.children.length;
+  updateSlider();
+
+  if (slideIndex === 0) {
+    setTimeout(() => {
+      slider.style.transition = 'none'; // Disable transition
+      slideIndex = 1;
+      updateSlider();
+      setTimeout(() => {
+        slider.style.transition = 'transform 0s ease-in-out'; // Re-enable transition
+      });
+    });
+  }
+}
+  </script>
+<div class="slider-container">
+  <div class="slider">
+    
+    <img src="task1.png" alt="Image 1">
+    <img src="task2.png" alt="Image 2">
+    <img src="task3.png" alt="Image 3">
+    <img src="task4.jpg" alt="Image 1">
+    <img src="task5.jpg" alt="Image 2">
+    <img src="task6.png" alt="Image 3">
+    <img src="task8.jpg" alt="Image 1">
+    <img src="task9.png" alt="Image 2">
+    <img src="task10.png" alt="Image 3">
+  </div>
+</div>
+
+<!-- //  const slider = document.querySelector('.slider');
+// let slideIndex = 0;
+
+// function nextSlide() {
+//   slideIndex = (slideIndex + 1) % slider.children.length;
+//   updateSlider();
+
+//   if (slideIndex === 0) {
+//     setTimeout(() => {
+//       slider.style.transition = 'none'; // Disable transition
+//       slideIndex = 1;
+//       updateSlider();
+//       setTimeout(() => {
+//         slider.style.transition = 'transform 0s ease-in-out'; // Re-enable transition
+//       });
+//     });
+//   }
+// }
+
+function updateSlider() {
+  slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+}
+
+setInterval(nextSlide, 10000) // Change slide every 5 seconds; -->
+
+
+</body>
+</html>
